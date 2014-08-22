@@ -1,0 +1,141 @@
+/*
+Title: Creating an HTML5 enhanced responsive-ready contact form, with custom javascript feature detection
+Tutorial on: http://www.onextrapixel.com
+Author: http://www.toddmotto.com
+*/
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+body {
+	font:400 12px/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#444;
+	background:#991D57;
+	background-image:linear-gradient(left , #761542 0%, #991D57 52%, #761542 100%);
+	background-image:-moz-linear-gradient(left , #761542 0%, #991D57 52%, #761542 100%);
+	background-image:-webkit-linear-gradient(left , #761542 0%, #991D57 52%, #761542 100%);
+}
+.wrapper {
+	max-width:500px;
+	width:95%;
+	margin:0 auto;
+	position:relative;
+}
+#references input[type="text"],
+#references input[type="email"],
+#references input[type="tel"],
+#references input[type="url"],
+#references select,
+#references textarea,
+#references button[type="submit"] {
+	font:400 12px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#references {
+	text-shadow:0 1px 0 #FFF;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	background:#F9F9F9;
+	padding:25px;
+}
+#references h3 {
+	color:#991D57;
+	display:block;
+	font-size:28px;
+}
+#references h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+#references label span {
+	cursor:pointer;
+	color:#991D57;
+	display:block;
+	margin:5px 0;
+	font-weight:900;
+	font-size:15px;
+}
+#references input[type="text"],
+#references input[type="email"],
+#references input[type="tel"],
+#references input[type="url"],
+#references select,
+#references textarea {
+	width:100%;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#references input[type="text"]:hover,
+#references input[type="email"]:hover,
+#references input[type="tel"]:hover,
+#references input[type="url"]:hover,
+#references select:hover,
+#references textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+#references textarea {
+	height:100px;
+	max-width:100%;
+}
+#references button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#991D57;
+	background-image:linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	background-image:-moz-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	background-image:-webkit-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#references button[type="submit"]:hover {
+	background-image:linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	background-image:-moz-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	background-image:-webkit-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+#references button[type="submit"]:active {
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+}
+#references input:focus,
+#references select:focus,
+#references textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+    color:#888;
+}
+:-moz-placeholder {
+    color:#888;
+}
+::-moz-placeholder {
+    color:#888;
+}
+:-ms-input-placeholder {
+    color:#888;
+}
+#.ui-datepicker-calendar { display: none; }
