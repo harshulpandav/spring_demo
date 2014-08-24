@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.MultivaluedMap;
 
 import org.idiginfo.docsvc.model.citagora.RatingType;
 import org.idiginfo.docsvc.model.citagora.Reference;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TestSpring {
+public class TransactionService {
 
 	public static final String CITAGORA_OBJ_CLASS_NAME = CitagoraObjectImpl.class
 			.getCanonicalName();
@@ -27,20 +28,20 @@ public class TestSpring {
 	private EntityManager entityManager ;
 	
 	@Transactional
-	public boolean modify(HttpServletRequest request){
+	public boolean modify(MultivaluedMap<String, String> queryParams){
 		Query q = entityManager.createQuery("SELECT e FROM " + REFERENCE_CLASS_NAME
 				+ " e WHERE e.uri=:uri");
-		q.setParameter("uri", request.getParameter("uri"));
+		q.setParameter("uri", queryParams.getFirst("uri"));
 		List<Reference> references = q.getResultList();
 		if(references.size()>0){
 			Reference ref = references.get(0);
-			ref.setSource(request.getParameter("source"));
-			ref.setLanguage(request.getParameter("language"));
-			ref.setTitle(request.getParameter("title"));
-			ref.setSubject(request.getParameter("subject"));
+			ref.setSource(queryParams.getFirst("source"));
+			ref.setLanguage(queryParams.getFirst("language"));
+			ref.setTitle(queryParams.getFirst("title"));
+			ref.setSubject(queryParams.getFirst("subject"));
 			ref.setShortTitle("Short Article");
-			ref.setDoi(request.getParameter("doi"));
-			ref.setPmid(request.getParameter("pmid"));
+			ref.setDoi(queryParams.getFirst("doi"));
+			ref.setPmid(queryParams.getFirst("pmid"));
 			entityManager.flush();
 			return true;
 		}
@@ -48,9 +49,9 @@ public class TestSpring {
 	}
 	
 	@Transactional
-	public void createContainer(HttpServletRequest request){
+	public void createContainer(MultivaluedMap<String, String> queryParams){
 		ContainerImpl document = new ContainerImpl();
-		document.setSource(request.getParameter("source"));
+		document.setSource(queryParams.getFirst("source"));
 		document.setRights("http://www.nlm.nih.gov/databases/license/license.html");
 		// first review
 		ReviewImpl review = new ReviewImpl();
@@ -93,29 +94,29 @@ public class TestSpring {
 		ReferenceImpl reference = new ReferenceImpl();
 		document.setIsAbout(reference);
 //		reference.setLanguage("English");
-		reference.setLanguage(request.getParameter("language"));
+		reference.setLanguage(queryParams.getFirst("language"));
 		reference.addContainer(document);
 		reference
 				.addSeeAlso("another link that also provides some information about this article");
 //		reference.setUri("http://example.com/article/1");
-		reference.setUri(request.getParameter("uri"));
+		reference.setUri(queryParams.getFirst("uri"));
 
 //		reference.setTitle("Some Journal Article");
-		reference.setTitle(request.getParameter("title"));
+		reference.setTitle(queryParams.getFirst("title"));
 
 //		reference.setSubject("some keyword");
-		reference.setSubject(request.getParameter("subject"));
+		reference.setSubject(queryParams.getFirst("subject"));
 
 
 		reference.setShortTitle("Short Article");
 		reference
 				.setAbstract("This is an abstract for a journal article. This article discusses something very important. This is an example.");
 //		reference.setDoi("doi id");
-		reference.setDoi(request.getParameter("doi"));
+		reference.setDoi(queryParams.getFirst("doi"));
 
 		// reference.setId("doi:doi id");
 //		reference.setPmid("pmid number");
-		reference.setPmid(request.getParameter("pmid"));
+		reference.setPmid(queryParams.getFirst("pmid"));
 
 		// note identifier is multi-valued
 		// <dcterms:identifier>pmid:pmid number</dcterms:identifier>

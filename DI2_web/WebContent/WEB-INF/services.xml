@@ -36,7 +36,7 @@
 
 	<context:component-scan base-package="org.idiginfo.docsvc.jpa.citagora" />
 <!-- 	<context:component-scan base-package="org.idiginfo.docsvc.jpa.citagora" /> -->
- 	<context:component-scan base-package="org.idiginfo.docsvc.test" /> 
+ 	<context:component-scan base-package="org.idiginfo.docsvc.rest" /> 
 <!-- 	<context:component-scan base-package="org.idiginfo.docsvc.jpa.test" /> -->
 <!-- 	<context:component-scan base-package="org.idiginfo.docsvc.model.citagora" /> -->
 

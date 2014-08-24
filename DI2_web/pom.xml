@@ -38,15 +38,6 @@
 
 	</properties>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -321,7 +312,12 @@
 			<artifactId>google-http-client</artifactId>
 			<version>${googlehttp.version}</version>
 		</dependency>
-
+<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>1.12</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 	<groupId>org.idiginfo.docsvc</groupId>
 </project>

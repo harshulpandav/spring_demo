@@ -14,7 +14,7 @@
 <body>
 <div class="wrapper">
 		<div id="main" style="padding:50px 0 0 0;">
-	<form id="references" action="CalServlet">
+	<form id="references" action="api/rest/">
 		<h3>References</h3>
 		<h4>This is a demonstration of inserting References</h4>
 		<div>
